@@ -79,3 +79,43 @@ document.addEventListener("DOMContentLoaded", () => {
         selectEl.value = "";
     });
 });
+// --- TASK 3: FORM VALIDATION FEEDBACK ---
+document.addEventListener("DOMContentLoaded", () => {
+    const submitBtn = document.querySelector(".btn.full-btn");
+    const feedbackDiv = document.getElementById("form-feedback");
+
+    if (!submitBtn || !feedbackDiv) return;
+
+    submitBtn.addEventListener("click", () => {
+        // Grab fields by their IDs
+        const nameInput = document.getElementById("name");
+        const phoneInput = document.getElementById("phone");
+        const dateInput = document.getElementById("date");
+
+        const nameValue = nameInput ? nameInput.value.trim() : "";
+        const phoneValue = phoneInput ? phoneInput.value.trim() : "";
+        const dateValue = dateInput ? dateInput.value.trim() : "";
+
+        // 1. Validation Check: Check if fields are empty
+        if (nameValue === "" || phoneValue === "" || dateValue === "") {
+            feedbackDiv.style.display = "block";
+            feedbackDiv.style.backgroundColor = "#ff4d4d"; // Red error style
+            feedbackDiv.style.color = "#fff";
+            feedbackDiv.textContent = "⚠️ Please fill out your Name, Phone, and Preferred Date.";
+            return;
+        }
+
+        // 2. Success: Display beautiful custom confirmation message
+        feedbackDiv.style.display = "block";
+        feedbackDiv.style.backgroundColor = "#2ecc71"; // Green success style
+        feedbackDiv.style.color = "#fff";
+        feedbackDiv.textContent = `Thank you, ${nameValue}! Your booking for ${dateValue} has been received. Jean will reach out to you at ${phoneValue} soon. ✨`;
+
+        // Clear fields after a successful submission
+        if (nameInput) nameInput.value = "";
+        if (phoneInput) phoneInput.value = "";
+        if (dateInput) dateInput.value = "";
+        const notesInput = document.getElementById("notes");
+        if (notesInput) notesInput.value = "";
+    });
+});
