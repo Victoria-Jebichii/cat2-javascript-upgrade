@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nails by Jean</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header>
+    <nav>
+      <div class="logo">Nails by Jean</div>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="gallery5.jpg.jpeg">Gallery</a></li>
+        <li><a href="#booking">Book</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">Nairobi's Nail Artistry Studio</p>
+        <h1>Beautiful nails,<br /><em>crafted for you.</em></h1>
+        <a href="#booking" class="btn">Book an Appointment</a>
+      </div>
+      <div class="hero-img-wrap">
+        <img src="gallery5.jpg.jpeg" alt="Jean's nail artistry" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <p class="label">What We Offer</p>
+      <h2>Our Services</h2>
+
+      <div class="services-grid">
+
+        <div class="card">
+          <span class="icon">💅</span>
+          <h3>Classic Manicure</h3>
+          <p>Shaping, cuticle care, hand massage and polish of your choice.</p>
+          <span class="price">From KSh 800</span>
+        </div>
+
+        <div class="card">
+          <span class="icon">🦶</span>
+          <h3>Classic Pedicure</h3>
+          <p>Foot soak, exfoliation, nail care and a relaxing foot massage.</p>
+          <span class="price">From KSh 1,200</span>
+        </div>
+
+        <div class="card">
+          <span class="icon">✨</span>
+          <h3>Gel Manicure</h3>
+          <p>Long-lasting gel polish, chip-free for up to 3 weeks.</p>
+          <span class="price">From KSh 1,500</span>
+        </div>
+
+        <div class="card">
+          <span class="icon">🌸</span>
+          <h3>Spa Pedicure</h3>
+          <p>An indulgent pedicure with scrub, mask and extended massage.</p>
+          <span class="price">From KSh 2,200</span>
+        </div>
+
+        <div class="card">
+          <span class="icon">🎨</span>
+          <h3>Nail Art</h3>
+          <p>Custom florals, ombre, gems and hand-painted designs.</p>
+          <span class="price">From KSh 500</span>
+        </div>
+
+        <div class="card">
+          <span class="icon">💎</span>
+          <h3>Acrylic Extensions</h3>
+          <p>Full set or infills for added length and strength.</p>
+          <span class="price">From KSh 2,500</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="gallery-section">
+      <p class="label">Portfolio</p>
+      <h2>Jean's Work</h2>
+      <div class="gallery-grid">
+        <div class="g-item tall"><img src="gallery1.jpg.jpeg" alt="Nail set 1" /></div>
+        <div class="g-item"><img src="gallery2.jpg.jpeg" alt="Nail set 2" /></div>
+        <div class="g-item"><img src="galler3.jpg.jpeg" alt="Nail set 3" /></div>
+        <div class="g-item wide"><img src="gallery4.jpg.jpeg" alt="Nail set 4" /></div>
+        <div class="g-item"><img src="gallery6.jpg.jpeg" alt="Nail set 5" /></div>
+      </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section id="booking" class="booking-section">
+      <p class="label">Get in Touch</p>
+      <h2>Book an Appointment</h2>
+      <p class="sub">Choose how you'd like to reach Jean.</p>
+
+      <div class="contact-row">
+        <div class="contact-card">
+          <span>📱</span>
+          <h4>WhatsApp</h4>
+          <p>Quickest way to book</p>
+          <a href="https://wa.me/254727792252" target="_blank" rel="noopener">Chat Now →</a>
+        </div>
+        <div class="contact-card">
+          <span>📞</span>
+          <h4>Call / SMS</h4>
+          <p>Mon–Sat, 8am – 7pm</p>
+          <a href="tel:+254727792252">+254 727 792 252 →</a>
+        </div>
+        <div class="contact-card">
+          <span>📍</span>
+          <h4>Walk-In</h4>
+          <p>Welcome when slots are open</p>
+          <span class="static">Nairobi, Kenya</span>
+        </div>
+      </div>
+
+      <div class="form-wrap">
+        <h3>Send a Request</h3>
+        <div class="form">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your full name" />
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" placeholder="e.g. 0712 345 678" />
+          </div>
+          <div class="field">
+            <label for="service">Service</label>
+            <select id="service">
+              <option value="">— Choose a service —</option>
+              <option>Classic Manicure</option>
+              <option>Classic Pedicure</option>
+              <option>Gel Manicure</option>
+              <option>Spa Pedicure</option>
+              <option>Nail Art</option>
+              <option>Acrylic Extensions</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" />
+          </div>
+          <div class="field full">
+            <label for="notes">Notes</label>
+            <textarea id="notes" rows="3" placeholder="Any special requests..."></textarea>
+          </div>
+          <button type="button" class="btn full-btn">Send Request 💅</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="f-brand">
+        <p class="f-logo">Nails by Jean</p>
+        <p>Professional nail artistry in Nairobi.</p>
+      </div>
+      <div class="f-links">
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#booking">Book</a>
+      </div>
+    </div>
+    <p class="copy">© 2026 Nails by Jean · Made with 💖</p>
+  </footer>
+
+</body>
+</html>
