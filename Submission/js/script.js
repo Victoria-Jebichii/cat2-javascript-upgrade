@@ -29,3 +29,53 @@ function renderServices() {
 }
 
 document.addEventListener("DOMContentLoaded", renderServices);
+// --- TASK 2: DYNAMIC ADD & REMOVE ELEMENTS ---
+document.addEventListener("DOMContentLoaded", () => {
+    const addBtn = document.getElementById("add-wishlist-btn");
+    const selectEl = document.getElementById("wishlist-select");
+    const wishlistContainer = document.getElementById("wishlist-container");
+
+    if (!addBtn || !selectEl || !wishlistContainer) return;
+
+    addBtn.addEventListener("click", () => {
+        const selectedValue = selectEl.value;
+
+        if (selectedValue === "") {
+            alert("Please select a service first!");
+            return;
+        }
+
+        // 1. Create the list item element dynamically
+        const li = document.createElement("li");
+        li.style.display = "flex";
+        li.style.justifyContent = "space-between";
+        li.style.alignItems = "center";
+        li.style.padding = "10px";
+        li.style.borderBottom = "1px solid #333";
+        li.style.color = "#fff";
+        
+        // Add text to the list item
+        li.textContent = selectedValue;
+
+        // 2. Create its own personal remove button dynamically
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "❌ Remove";
+        removeBtn.style.background = "none";
+        removeBtn.style.border = "none";
+        removeBtn.style.color = "#ff4d4d";
+        removeBtn.style.cursor = "pointer";
+        removeBtn.style.fontWeight = "bold";
+
+        // 3. Setup the remove function using .remove()
+        removeBtn.addEventListener("click", () => {
+            li.remove();
+        });
+
+        // 4. Append components together into the DOM
+        li.appendChild(removeBtn);
+        wishlistContainer.appendChild(li);
+
+        // Reset the selector dropdown choice back to default
+        selectEl.value = "";
+    });
+});
