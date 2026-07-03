@@ -1,0 +1,17 @@
+Nails by Jean - CAT 2 JavaScript Upgrade Implementation Notes
+
+Task 1: Loop-rendered dynamic content
+- Extracted hardcoded HTML services into a clean JavaScript array of service objects.
+- Used DOM manipulation loops to dynamically render cards onto the page.
+
+Task 2 & 4: Dynamic Wishlist with localStorage Persistence
+- Built a custom interface to add and remove appointment wishlist items using createElement() and appendChild().
+- Integrated localStorage so the chosen services stay safely stored on the screen even after a page reload.
+
+Task 3: Form handling with validation feedback
+- Attached a click listener to the submission button.
+- Implemented real-time check to verify if the Name, Phone, and Date fields are filled, rendering custom green success or red error validation boxes directly into the page.
+
+Task 5: Click-to-reveal banner overlay
+- Configured a click handler on the top main hero banner container.
+- Leveraged classList.toggle() to cleanly show or hide a welcome text overlay box when the banner is clicked.
