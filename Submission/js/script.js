@@ -29,7 +29,7 @@ function renderServices() {
 }
 
 document.addEventListener("DOMContentLoaded", renderServices);
-// --- TASK 2: DYNAMIC ADD & REMOVE ELEMENTS ---
+// --- TASK 2 & 4: DYNAMIC WISHLIST WITH LOCALSTORAGE PERSISTENCE ---
 document.addEventListener("DOMContentLoaded", () => {
     const addBtn = document.getElementById("add-wishlist-btn");
     const selectEl = document.getElementById("wishlist-select");
@@ -37,15 +37,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!addBtn || !selectEl || !wishlistContainer) return;
 
-    addBtn.addEventListener("click", () => {
-        const selectedValue = selectEl.value;
+    // Function to save current wishlist array to localStorage
+    const saveWishlistToStorage = () => {
+        const items = [];
+        wishlistContainer.querySelectorAll("li").forEach(li => {
+            // Get text content and clean it up (removing the ❌ Remove text)
+            const text = li.textContent.replace("❌ Remove", "").trim();
+            items.push(text);
+        });
+        localStorage.setItem("savedWishlist", JSON.stringify(items));
+    };
 
-        if (selectedValue === "") {
-            alert("Please select a service first!");
-            return;
-        }
-
-        // 1. Create the list item element dynamically
+    // Function to dynamically create and append a wishlist item element
+    const createWishlistItem = (value) => {
         const li = document.createElement("li");
         li.style.display = "flex";
         li.style.justifyContent = "space-between";
@@ -53,11 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
         li.style.padding = "10px";
         li.style.borderBottom = "1px solid #333";
         li.style.color = "#fff";
-        
-        // Add text to the list item
-        li.textContent = selectedValue;
+        li.textContent = value;
 
-        // 2. Create its own personal remove button dynamically
         const removeBtn = document.createElement("button");
         removeBtn.textContent = "❌ Remove";
         removeBtn.style.background = "none";
@@ -66,16 +67,31 @@ document.addEventListener("DOMContentLoaded", () => {
         removeBtn.style.cursor = "pointer";
         removeBtn.style.fontWeight = "bold";
 
-        // 3. Setup the remove function using .remove()
         removeBtn.addEventListener("click", () => {
             li.remove();
+            saveWishlistToStorage(); // Update storage when an item is removed
         });
 
-        // 4. Append components together into the DOM
         li.appendChild(removeBtn);
         wishlistContainer.appendChild(li);
+    };
 
-        // Reset the selector dropdown choice back to default
+    // Load existing items from localStorage when the page opens
+    const storedItems = JSON.parse(localStorage.getItem("savedWishlist")) || [];
+    storedItems.forEach(item => createWishlistItem(item));
+
+    // Event listener for adding new items
+    addBtn.addEventListener("click", () => {
+        const selectedValue = selectEl.value;
+
+        if (selectedValue === "") {
+            alert("Please select a service first!");
+            return;
+        }
+
+        createWishlistItem(selectedValue);
+        saveWishlistToStorage(); // Save to storage when a new item is added
+
         selectEl.value = "";
     });
 });
@@ -117,5 +133,27 @@ document.addEventListener("DOMContentLoaded", () => {
         if (dateInput) dateInput.value = "";
         const notesInput = document.getElementById("notes");
         if (notesInput) notesInput.value = "";
+    });
+});
+// --- TASK 5: CLICK-TO-REVEAL BANNER OVERLAY ---
+document.addEventListener("DOMContentLoaded", () => {
+    const mainBanner = document.getElementById("main-banner");
+    const bannerCaption = document.getElementById("banner-caption");
+
+    if (!mainBanner || !bannerCaption) return;
+
+    mainBanner.addEventListener("click", (event) => {
+        // Prevent the click event from triggering if the user is clicking the "Book an Appointment" link button specifically
+        if (event.target.tagName === 'A') return;
+
+        // Toggle visual display
+        if (bannerCaption.style.display === "none" || bannerCaption.style.display === "") {
+            bannerCaption.style.display = "block";
+        } else {
+            bannerCaption.style.display = "none";
+        }
+        
+        // Satisfies the requirement: toggles a custom active class using classList.toggle
+        bannerCaption.classList.toggle("revealed-active");
     });
 });
